@@ -1,0 +1,74 @@
+.layout-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main-content {
+  width: 100%;
+}
+
+/* Scroll indicators */
+.scroll-indicators {
+  position: fixed;
+  right: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  z-index: 10;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gray);
+  transition: var(--transition-normal);
+}
+
+.indicator.active {
+  background-color: var(--green);
+  transform: scale(1.5);
+}
+
+/* Auth section */
+.auth-section {
+  background-color: var(--beige-light);
+}
+
+/* Side text */
+.side-text {
+  position: fixed;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--green);
+  z-index: 5;
+}
+
+.side-text-left {
+  left: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.side-text-right {
+  right: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .scroll-indicators {
+    right: var(--spacing-sm);
+  }
+  
+  .side-text {
+    display: none;
+  }
+}

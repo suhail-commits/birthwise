@@ -1,0 +1,112 @@
+.birthwise-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--brown);
+  position: relative;
+}
+
+.birthwise-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.birthwise-content.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.birthwise-text {
+  font-size: 8rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--beige);
+  text-transform: lowercase;
+  letter-spacing: -0.05em;
+}
+
+.wise-text {
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 1s ease 0.5s;
+}
+
+.wise-text.appear {
+  opacity: 1;
+}
+
+.description-content {
+  max-width: 800px;
+  margin-top: 3rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.description-content.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.description-text {
+  color: var(--beige);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-family: var(--font-heading);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  color: var(--beige);
+}
+
+.scroll-hint p {
+  font-size: 0.8rem;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .birthwise-text {
+    font-size: 4rem;
+  }
+  
+  .description-text {
+    font-size: 1.2rem;
+  }
+  
+  .scroll-hint {
+    bottom: var(--spacing-lg);
+  }
+}

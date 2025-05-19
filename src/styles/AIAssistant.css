@@ -1,0 +1,142 @@
+.ai-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--beige-light);
+  padding: 2rem;
+  gap: 4rem;
+}
+
+.heart-container {
+  position: relative;
+}
+
+.heart {
+  width: 100px;
+  height: 100px;
+  background-color: var(--green);
+  position: relative;
+  transform: rotate(45deg);
+  animation: pulse 1.5s ease infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background-color: var(--green);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: -50px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.chat-interface {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid var(--brown);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.submit-button {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--brown);
+  color: var(--beige);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--brown-dark);
+}
+
+.response-area {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.assistant-title {
+  color: var(--brown);
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+
+.response-content {
+  color: var(--brown-light);
+  line-height: 1.6;
+}
+
+.trust-banner {
+  text-align: center;
+  color: var(--brown);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .ai-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .heart {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .heart::before,
+  .heart::after {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .heart::before {
+    top: -30px;
+  }
+  
+  .heart::after {
+    left: -30px;
+  }
+}

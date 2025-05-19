@@ -1,0 +1,49 @@
+.birth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--brown);
+  position: relative;
+  overflow: hidden;
+}
+
+.birth-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  position: relative;
+}
+
+.birth-content.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.birth-text {
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  font-weight: 400;
+  color: var(--beige);
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  text-align: center;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .birth-text {
+    font-size: 4rem;
+  }
+}

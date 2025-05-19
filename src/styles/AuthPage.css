@@ -1,0 +1,241 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--beige);
+  overflow-x: hidden;
+}
+
+.role-selection {
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--spacing-xl);
+  animation: slideUp 0.8s ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.role-title {
+  font-size: 2.5rem;
+  color: var(--brown);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-heading);
+}
+
+.role-subtitle {
+  text-align: center;
+  color: var(--brown-light);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+.role-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  flex-wrap: nowrap;
+  padding: 0 var(--spacing-lg);
+}
+
+.role-card {
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+  max-width: 300px;
+}
+
+.role-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.role-icon {
+  color: var(--green);
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.role-card h3 {
+  color: var(--brown);
+  font-size: 1.4rem;
+  font-family: var(--font-heading);
+  margin-bottom: var(--spacing-sm);
+}
+
+.role-card p {
+  color: var(--brown-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Details Form Styles */
+.details-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  background-color: var(--beige-light);
+  padding: var(--spacing-xl);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  animation: slideInFromRight 0.5s ease forwards;
+  overflow-y: auto;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--brown);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: var(--spacing-md) 0;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  transition: var(--transition-fast);
+}
+
+.back-button:hover {
+  color: var(--green);
+}
+
+.details-form {
+  background-color: white;
+  padding: var(--spacing-xl);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.details-form h3 {
+  color: var(--brown);
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-xl);
+  font-family: var(--font-heading);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--brown);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--beige-dark);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--brown);
+  background-color: var(--beige-light);
+  transition: var(--transition-fast);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(85, 107, 47, 0.1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .role-grid {
+    flex-wrap: wrap;
+  }
+  
+  .role-card {
+    min-width: 250px;
+  }
+  
+  .details-container {
+    position: fixed;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .role-selection {
+    padding: var(--spacing-lg);
+  }
+  
+  .role-title {
+    font-size: 2rem;
+  }
+  
+  .role-subtitle {
+    font-size: 1rem;
+  }
+  
+  .role-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .role-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .details-form {
+    padding: var(--spacing-lg);
+  }
+  
+  .details-form h3 {
+    font-size: 1.5rem;
+  }
+}
