@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Baby, Users, Stethoscope, Heart } from 'lucide-react';
 import Button from '../components/ui/Button';
 import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 import '../styles/AuthPage.css';
 
 interface UserDetails {
@@ -15,6 +16,8 @@ const AuthPage: React.FC = () => {
     role: null,
     formData: {}
   });
+  const [isLogin, setIsLogin] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleRoleSelect = (role: string) => {
     setSelectedRole(role);
@@ -32,13 +35,77 @@ const AuthPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Submitted details:', userDetails);
+    if (isAuthenticated) {
+      console.log('Submitted details:', userDetails);
+    } else {
+      alert('Please login or signup first');
+    }
+  };
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const toggleAuthMode = () => {
+    setIsLogin(!isLogin);
   };
 
   const renderExpectantMotherForm = () => (
     <form onSubmit={handleSubmit} className="details-form">
       <h3>Tell us about yourself</h3>
       
+      <div className="form-group">
+        <label htmlFor="careType">Type of Care</label>
+        <select id="careType" name="careType" onChange={handleInputChange} required>
+          <option value="">Select care type</option>
+          <option value="prenatal">Prenatal Care</option>
+          <option value="postpartum">Postpartum Care</option>
+        </select>
+      </div>
+
+      {userDetails.formData.careType === 'prenatal' && (
+        <div className="form-group">
+          <label htmlFor="weeksPregnant">How many weeks pregnant are you?</label>
+          <input
+            type="number"
+            id="weeksPregnant"
+            name="weeksPregnant"
+            min="1"
+            max="42"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+      )}
+
+      {userDetails.formData.careType === 'postpartum' && (
+        <div className="form-group">
+          <label htmlFor="babyAge">Baby's Age</label>
+          <div className="age-inputs">
+            <input
+              type="number"
+              id="ageWeeks"
+              name="ageWeeks"
+              placeholder="Weeks"
+              min="0"
+              max="52"
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              type="number"
+              id="ageMonths"
+              name="ageMonths"
+              placeholder="Months"
+              min="0"
+              max="24"
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+        </div>
+      )}
+
       <div className="form-group">
         <label htmlFor="fullName">Full Name</label>
         <input
@@ -64,19 +131,6 @@ const AuthPage: React.FC = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="weeksPregnant">How many weeks pregnant are you?</label>
-        <input
-          type="number"
-          id="weeksPregnant"
-          name="weeksPregnant"
-          min="1"
-          max="42"
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-
-      <div className="form-group">
         <label htmlFor="firstPregnancy">Is this your first pregnancy?</label>
         <select id="firstPregnancy" name="firstPregnancy" onChange={handleInputChange} required>
           <option value="">Select an option</option>
@@ -94,12 +148,25 @@ const AuthPage: React.FC = () => {
           placeholder="Please list any health conditions..."
         />
       </div>
+
+      {isAuthenticated && (
+        <Button type="submit" variant="primary">Submit</Button>
+      )}
     </form>
   );
 
   const renderPartnerForm = () => (
     <form onSubmit={handleSubmit} className="details-form">
       <h3>Partner Information</h3>
+
+      <div className="form-group">
+        <label htmlFor="careType">Type of Care</label>
+        <select id="careType" name="careType" onChange={handleInputChange} required>
+          <option value="">Select care type</option>
+          <option value="prenatal">Prenatal Care</option>
+          <option value="postpartum">Postpartum Care</option>
+        </select>
+      </div>
       
       <div className="form-group">
         <label htmlFor="partnerName">Your Full Name</label>
@@ -152,12 +219,25 @@ const AuthPage: React.FC = () => {
           placeholder="Tell us what you'd like to learn about..."
         />
       </div>
+
+      {isAuthenticated && (
+        <Button type="submit" variant="primary">Submit</Button>
+      )}
     </form>
   );
 
   const renderHealthcareProviderForm = () => (
     <form onSubmit={handleSubmit} className="details-form">
       <h3>Healthcare Provider Information</h3>
+
+      <div className="form-group">
+        <label htmlFor="careType">Type of Care</label>
+        <select id="careType" name="careType" onChange={handleInputChange} required>
+          <option value="">Select care type</option>
+          <option value="prenatal">Prenatal Care</option>
+          <option value="postpartum">Postpartum Care</option>
+        </select>
+      </div>
       
       <div className="form-group">
         <label htmlFor="providerName">Full Name</label>
@@ -203,12 +283,25 @@ const AuthPage: React.FC = () => {
           required
         />
       </div>
+
+      {isAuthenticated && (
+        <Button type="submit" variant="primary">Submit</Button>
+      )}
     </form>
   );
 
   const renderCaretakerForm = () => (
     <form onSubmit={handleSubmit} className="details-form">
       <h3>Professional Caretaker Information</h3>
+
+      <div className="form-group">
+        <label htmlFor="careType">Type of Care</label>
+        <select id="careType" name="careType" onChange={handleInputChange} required>
+          <option value="">Select care type</option>
+          <option value="prenatal">Prenatal Care</option>
+          <option value="postpartum">Postpartum Care</option>
+        </select>
+      </div>
       
       <div className="form-group">
         <label htmlFor="caretakerName">Full Name</label>
@@ -252,6 +345,10 @@ const AuthPage: React.FC = () => {
           <option value="oncall">On-call</option>
         </select>
       </div>
+
+      {isAuthenticated && (
+        <Button type="submit" variant="primary">Submit</Button>
+      )}
     </form>
   );
 
@@ -325,10 +422,17 @@ const AuthPage: React.FC = () => {
               {renderForm()}
             </div>
             <div className="login-container">
-              <LoginForm 
-                toggleAuthMode={() => {}} 
-                onLogin={() => console.log('Login successful')} 
-              />
+              {isLogin ? (
+                <LoginForm 
+                  toggleAuthMode={toggleAuthMode} 
+                  onLogin={handleLogin} 
+                />
+              ) : (
+                <SignupForm 
+                  toggleAuthMode={toggleAuthMode}
+                  onLogin={handleLogin}
+                />
+              )}
             </div>
           </div>
         )}

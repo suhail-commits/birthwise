@@ -191,6 +191,15 @@
   box-shadow: 0 0 0 2px rgba(85, 107, 47, 0.1);
 }
 
+.age-inputs {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.age-inputs input {
+  flex: 1;
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
