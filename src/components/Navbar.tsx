@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Sprout } from 'lucide-react';
 import '../styles/Navbar.css';
 
@@ -8,6 +8,13 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentSection }) => {
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav className={`navbar ${currentSection > 0 ? 'scrolled' : ''}`}>
       <div className="navbar-brand">
@@ -15,10 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentSection }) => {
         <span className="brand-text">BirthWise</span>
       </div>
       <div className="navbar-links">
-        <Link to="/" className="nav-link">Home</Link>
-        <Link to="/about" className="nav-link">About</Link>
-        <Link to="/services" className="nav-link">Services</Link>
-        <Link to="/contact" className="nav-link">Contact</Link>
+        <button onClick={handleHomeClick} className="nav-link">Home</button>
       </div>
     </nav>
   );

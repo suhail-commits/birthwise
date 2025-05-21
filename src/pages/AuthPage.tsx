@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Baby, Users, Stethoscope, Heart } from 'lucide-react';
 import Button from '../components/ui/Button';
+import LoginForm from '../components/LoginForm';
 import '../styles/AuthPage.css';
 
 interface UserDetails {
@@ -32,7 +33,6 @@ const AuthPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Submitted details:', userDetails);
-    // Handle form submission
   };
 
   const renderExpectantMotherForm = () => (
@@ -94,8 +94,6 @@ const AuthPage: React.FC = () => {
           placeholder="Please list any health conditions..."
         />
       </div>
-
-      <Button type="submit" variant="primary">Continue</Button>
     </form>
   );
 
@@ -154,8 +152,6 @@ const AuthPage: React.FC = () => {
           placeholder="Tell us what you'd like to learn about..."
         />
       </div>
-
-      <Button type="submit" variant="primary">Continue</Button>
     </form>
   );
 
@@ -207,8 +203,6 @@ const AuthPage: React.FC = () => {
           required
         />
       </div>
-
-      <Button type="submit" variant="primary">Continue</Button>
     </form>
   );
 
@@ -258,8 +252,6 @@ const AuthPage: React.FC = () => {
           <option value="oncall">On-call</option>
         </select>
       </div>
-
-      <Button type="submit" variant="primary">Continue</Button>
     </form>
   );
 
@@ -325,11 +317,19 @@ const AuthPage: React.FC = () => {
             </div>
           </>
         ) : (
-          <div className="details-container">
-            <button className="back-button" onClick={() => setSelectedRole(null)}>
-              ← Back to role selection
-            </button>
-            {renderForm()}
+          <div className="auth-forms-container">
+            <div className="details-container">
+              <button className="back-button" onClick={() => setSelectedRole(null)}>
+                ← Back to role selection
+              </button>
+              {renderForm()}
+            </div>
+            <div className="login-container">
+              <LoginForm 
+                toggleAuthMode={() => {}} 
+                onLogin={() => console.log('Login successful')} 
+              />
+            </div>
           </div>
         )}
       </div>
