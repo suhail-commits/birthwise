@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import HomePage from '../pages/HomePage';
 import AuthPage from '../pages/AuthPage';
 import BirthwiseSection from '../components/BirthwiseSection';
+import ChatbotSection from '../components/ChatbotSection';
 import { useLocation } from 'react-router-dom';
 import '../styles/MainLayout.css';
 
@@ -24,7 +25,7 @@ const MainLayout: React.FC = () => {
       const newSection = Math.floor(scrollPosition / windowHeight);
       setCurrentSection(newSection);
 
-      if (newSection >= 1) {
+      if (newSection >= 2) {
         setShowLogin(true);
       } else {
         setShowLogin(false);
@@ -62,6 +63,10 @@ const MainLayout: React.FC = () => {
           <BirthwiseSection />
         </section>
         
+        <section className="section chatbot-section">
+          <ChatbotSection />
+        </section>
+        
         <section className="section auth-section">
           <AuthPage 
             isSignup={showSignup} 
@@ -74,6 +79,7 @@ const MainLayout: React.FC = () => {
       <div className="scroll-indicators">
         <div className={`indicator ${currentSection === 0 ? 'active' : ''}`} />
         <div className={`indicator ${currentSection === 1 ? 'active' : ''}`} />
+        <div className={`indicator ${currentSection === 2 ? 'active' : ''}`} />
       </div>
     </div>
   );
