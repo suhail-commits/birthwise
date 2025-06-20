@@ -33,6 +33,11 @@
   transform: scale(1.5);
 }
 
+/* Section styling */
+.chatbot-section {
+  background-color: var(--beige-light);
+}
+
 /* Auth section */
 .auth-section {
   background-color: var(--beige-light);
